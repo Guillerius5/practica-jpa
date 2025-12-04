@@ -2,6 +2,8 @@ package es.fpsumma.dam2.videoclub.persistence.jpa.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "director")
 public class DirectorEntity {
@@ -13,7 +15,8 @@ public class DirectorEntity {
     @Column(name = "nombre")
     private String nombre;
 
-    // Añadir relación con Lista de películas
+    @OneToMany(mappedBy = "director")
+    private List<PeliculaEntity> peliculas;
 
 
 
