@@ -3,6 +3,8 @@ package es.fpsumma.dam2.videoclub.persistence.jpa.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="cliente")
 public class ClienteEntity {
@@ -11,12 +13,14 @@ public class ClienteEntity {
     @GeneratedValue
     private Long id;
 
-    @Column(unique=true,name = "nombre")
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "mail")
+    @Column(name = "mail",nullable = false,unique = true)
     private String email;
 
+    @OneToMany(mappedBy = "director")
+    private List<AlquilerEntity> alquileres;
 }
 
 

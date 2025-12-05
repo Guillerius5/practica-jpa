@@ -4,6 +4,8 @@ package es.fpsumma.dam2.videoclub.persistence.jpa.entity;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.graphql.ConditionalOnGraphQlSchema;
 
+import java.util.List;
+
 @Entity
 @Table (name="PELICULAS")
 public class PeliculaEntity {
@@ -12,25 +14,33 @@ public class PeliculaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "titulo")
+    @Column(name = "titulo", nullable = false,length = 100)
     private String titulo;
 
-    @Column(name="genero")
+    @Column(name="genero",length=50)
     private String genero;
 
-    @Column(name = "anio_Estreno")
+    @Column(name = "anio_Estreno",nullable = false)
     private Integer anioEstreno;
 
     @Column(name="puntuacion")
     private double puntuacion;
-
 
     @ManyToOne
     @JoinColumn(name="director_id")
     private DirectorEntity director;
 
 
-    @ManyToMany(mappedBy = "pelicula")
-
+    @ManyToMany
+    @JoinTable(
+            name="pelicula_actor",
+            joinColumns = @JoinColumn(name = "pelicula_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
+    private List<ActorEntity> actores;
+
+    @OneToMany(mappedBy = "peliculas")
+    private List<AlquilerEntity> alquileres;
+
+
 }

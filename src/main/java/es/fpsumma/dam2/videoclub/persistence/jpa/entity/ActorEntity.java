@@ -13,15 +13,10 @@ public class ActorEntity {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre",nullable = false)
     private String nombre;
 
-
-    @ManyToMany
-    @JoinTable(
-            name="pelicula_actor",
-            joinColumns = @JoinColumn(name = "actor_id"),
-            inverseJoinColumns = @JoinColumn(name = "pelicula_id")
-    )
+    @ManyToMany(mappedBy = "actores")
     private List<PeliculaEntity> peliculas;
+
 }
