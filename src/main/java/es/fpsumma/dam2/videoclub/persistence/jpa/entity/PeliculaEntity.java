@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.graphql.ConditionalOnGraphQlSchema
 import java.util.List;
 
 @Entity
-@Table (name="PELICULAS")
+@Table (name="pelicula")
 public class PeliculaEntity {
 
     @Id
