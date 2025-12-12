@@ -20,29 +20,25 @@ class DirectorRepositoryTest {
 
     @Test
     void deberiaEncontrarDirectorPorNombre() {
-        Optional<DirectorEntity> resultado = directorRepository.findByNombre("Christopher Nolan");
-        assertThat(resultado).isPresent();
-        DirectorEntity director = resultado.get();
-        assertThat(director.getNombre()).isEqualTo("Christopher Nolan");
-    }
 
-
-    @Test
-    void deberiaEncontrarDirectorPorNombreContainingIgnoreCase() {
-        List<DirectorEntity> directores = directorRepository.findByNombreContainingIgnoreCase("Ridley");
-        assertThat(directores).hasSize(1);
-    }
-
-    @Test
-    void deberiaEncontrarDirectorPorNombre_conQuery() {
-        var resultado = directorRepository.buscarPorNombre("Christopher Nolan");
+        Optional<DirectorEntity> resultado= directorRepository.findByNombre("Christopher Nolan");
         assertThat(resultado).isPresent();
         assertThat(resultado.get().getNombre()).isEqualTo("Christopher Nolan");
     }
 
     @Test
-    void noDeberiaEncontrarDirectorInexistente() {
-        Optional<DirectorEntity> resultado = directorRepository.findByNombre("Director Inventado");
-        assertThat(resultado).isEmpty();
+    void deberiaComprobarExistenciaExistenciaPorNombre() {
+
+        boolean existe= directorRepository.existsByNombre("Christopher Nolan");
+        assertThat(existe).isTrue();
     }
+
+    @Test
+    void deberiaComprobarDirectorPorNombreQuery() {
+
+       List<DirectorEntity> resultado = directorRepository.findDirectoresByNombre("Christopher Nolan");
+        assertThat(resultado).hasSize(1);
+        assertThat(resultado.get(0).getNombre()).isEqualTo("Christopher Nolan");
+    }
+
 }

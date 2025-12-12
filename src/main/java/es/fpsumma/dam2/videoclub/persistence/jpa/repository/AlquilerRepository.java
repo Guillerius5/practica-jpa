@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public interface AlquilerRepository extends JpaRepository<AlquilerEntity,Long> {
 
-    List<AlquilerEntity> findByEmail(String email);
+    List<AlquilerEntity> findByClienteEmail(String email);
 
-    List<AlquilerEntity> findByTitulo(String titulo);
+    List<AlquilerEntity> findByPeliculaTitulo(String titulo);
 
     List<AlquilerEntity> findByFechaDevolucionIsNull();
 

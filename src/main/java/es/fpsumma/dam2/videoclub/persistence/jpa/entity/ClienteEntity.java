@@ -19,7 +19,7 @@ public class ClienteEntity {
     @Column(name = "mail",nullable = false,unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "director")
+    @OneToMany(mappedBy = "cliente")
     private List<AlquilerEntity> alquileres;
 }
 

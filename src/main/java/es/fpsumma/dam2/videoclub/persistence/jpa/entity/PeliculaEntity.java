@@ -39,7 +39,7 @@ public class PeliculaEntity {
     )
     private List<ActorEntity> actores;
 
-    @OneToMany(mappedBy = "peliculas")
+    @OneToMany(mappedBy = "pelicula")
     private List<AlquilerEntity> alquileres;
 
 

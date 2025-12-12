@@ -20,11 +20,11 @@ public class AlquilerEntity {
     @JoinColumn(name="peliculas_id",nullable = false)
     private PeliculaEntity pelicula;
 
-    @Column(name="fechaAlquiler",nullable = false)
-    private Date fecha_Alquiler;
+    @Column(name="fecha_alquiler", nullable = false) //
+    private Date fechaAlquiler;
 
-    @Column(name="fechaDevolucion")
-    private Date fecha_devolucion;
+    @Column(name="fecha_devolucion")
+    private Date fechaDevolucion;
 
 
 
